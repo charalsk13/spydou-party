@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spydou’s Birthday</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  background: url('bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  overflow-x: hidden;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.overlay {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+/* overlay dark background */
+.overlay::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.05);
+  z-index: 0;
+}
+
+/* main card */
+.card {
+  position: relative;
+  background: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  max-width: 480px;
+  padding: 50px 40px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  animation: slideUp 0.8s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  font-size: 32px;
+  margin: 0 0 15px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* age */
+.big {
+  font-size: 96px;
+  font-weight: 900;
+  margin: 20px 0 30px;
+  color: #808080;
+  animation: sparkle 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(200, 200, 200, 0.6));
+  background: url('glitter.jpg') center/cover;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-color: #808080;
+}
+
+
+/* info lines */
+.info {
+  margin: 20px 0;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 500;
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+  letter-spacing: 0.5px;
+}
+
+.info-separator {
+  display: inline-block;
+  margin: 0 12px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+}
+
+.info a {
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.info a:hover {
+  color: #808080;
+}
+
+.info a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: #808080;
+  transition: width 0.3s ease;
+}
+
+.info a:hover::after {
+  width: 100%;
+}
+
+.info:nth-child(4) { animation-delay: 0.1s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* dress code badge */
+.badge {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 16px 32px;
+  background: transparent;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  transition: all 0.3s ease;
+  text-shadow: none;
+  text-transform: uppercase;
+}
+
+.badge:hover {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.7);
+  transform: none;
+  color: #808080;
+}
+
+/* upload button */
+.upload-btn {
+  margin-top: 35px;
+  padding: 16px 32px;
+  background: url('glitter.jpg') center/cover, linear-gradient(135deg, #808080 0%, #a9a9a9 100%);
+  color: #fff;
+  border-radius: 50px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border: 2px solid #808080;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(128, 128, 128, 0.7), 0 0 20px rgba(200, 200, 200, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(128, 128, 128, 0.9), 0 0 30px rgba(200, 200, 200, 0.6);
+  background: linear-gradient(135deg, #a9a9a9 0%, #808080 100%);
+}
+
+.upload-btn:active {
+  transform: translateY(-1px);
+}
+
+/* small note */
+.note {
+  margin-top: 15px;
+  font-size: 13px;
+  opacity: 0.85;
+  color: rgba(255, 255, 255, 0.9);
+  font-style: italic;
+}
+</style>
+</head>
+
+<body>
+<div class="overlay">
+  <div class="card">
+    <h1>SPYDOU’S BIRTHDAY</h1>
+
+    <div class="big">26</div>
+
+    <div class="info">
+      <a href="https://calendar.google.com/calendar/r/eventedit?text=Spydou's+Birthday&dates=20260124T210000/20260124T230000&details=Black+elegant+with+a+chic+touch&location=Notara+125,+Piraeus" target="_blank">
+        Friday, January 24
+      </a>
+    </div>
+
+    <div class="info">
+      21:00
+    </div>
+
+    <div class="info">
+      <a href="https://maps.google.com/?q=Notara+125,+Piraeus" target="_blank">
+        Notara 125, Piraeus
+      </a>
+    </div>
+
+    <div class="badge">
+      Black elegant with a chic touch
+    </div>
+
+    <a class="upload-btn"
+       href="https://forms.gle/83wa1qqSSrsfGRj5A">
+       Ανέβασε φωτογραφίες
+    </a>
+
+    <div class="note">
+      uploads open during the party
+    </div>
+  </div>
+</div>
+</body>
+</html>
